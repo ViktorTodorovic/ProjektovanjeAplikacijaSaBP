@@ -1,0 +1,54 @@
+body {
+    background-image: url("../imgs/hirez.jpg");
+    background-attachment:fixed;
+    background-size:cover;
+    background-color: #f1f1f1;
+    font-family: 'Roboto', sans-serif;
+
+}
+@font-face {
+    font-family:'Roboto', sans-serif ;
+    src: url('roboto.eot');
+}
+.container{
+    margin-top: 150px;
+    
+}
+.col-6{
+    display: inline;
+    justify-content: center;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+.translucent-card {
+    background-color: rgba(20, 20, 20, 0.3); /* Adjust the transparency as needed */
+    backdrop-filter: blur(3px); /* Adjust the blur amount as needed */
+    border: none;
+  }
+  .navbar-item{  
+    justify-content: right;
+  }
+  .card{
+    margin-top:auto 10px;
+  }
+  .centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  .centertables{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;}
+    .translucent-table {
+        background-color: rgba(20, 20, 20, 0.3); /* Adjust the transparency as needed */
+        backdrop-filter: blur(3px); /* Adjust the blur amount as needed */
+        border: none;
+      }
