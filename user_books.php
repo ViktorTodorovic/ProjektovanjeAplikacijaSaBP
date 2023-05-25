@@ -19,7 +19,7 @@ if (!isset($_SESSION["priv"])) {
 
     <link rel="stylesheet" href="./css/style.css">
 
-    <title>User panel</title>
+    <title>User Books</title>
 </head>
 
 <body>
@@ -42,7 +42,7 @@ if (!isset($_SESSION["priv"])) {
                                     <tr>
                                         <th>ID</th>
                                         <th>ISBN</th>
-                                        <th>Autor</th>
+                                        <th>Author</th>
                                         <th>Name</th>
                                         <th>Genre</th>
                                         <th>Year</th>
@@ -51,17 +51,20 @@ if (!isset($_SESSION["priv"])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT * FROM books";
-                                    $result = mysqli_query($mysqli, $query);
+                                    $statement = $mysqli->prepare("SELECT * FROM books WHERE user_id = ?");
+                                    $user_id = $_SESSION["id"];
+                                    $statement->bind_param('i', $user_id);
+                                    $statement->execute();
+                                    $result = $statement->get_result();
 
                                     if (!$result) {
                                         die('Database connection error!');
                                     }
 
-                                    while ($books = mysqli_fetch_assoc($result)) {
+                                    while ($books = $result->fetch_assoc()) {
 
-                                        if($books["user_id"]==0){
-                                        ?>
+                                    
+                                    ?>
 
                                         <tr>
                                             <td><?php echo $books['id'] ?></td>
@@ -72,34 +75,27 @@ if (!isset($_SESSION["priv"])) {
                                             <td><?php echo $books['year'] ?></td>
                                             <td>
                                                 <?php
-                                                if ($_SESSION['priv'] === 1) {
+                                               if($_SESSION['priv'] === 0) 
                                                     echo '
-                                                    <form method="post" action="php/remove_book.php">
+                                                    <form method="post" action="php/return_book.php">
                                                         <input type="hidden" name="book_id" value="' . $books['id'] . '">
-                                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                                        <button type="submit" class="btn btn-primary">Return</button>
                                                     </form>';
-                                                } elseif ($_SESSION['priv'] === 0) {
-                                                    echo '
-                                                    <form method="post" action="php/rent_book.php">
-                                                        <input type="hidden" name="book_id" value="' . $books['id'] . '">
-                                                        <button type="submit" class="btn btn-success">Rent</button>
-                                                    </form>';
-                                                }
+                                                
                                                 ?>
                                             </td>
                                         </tr>
-                                    <?php }} ?>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer translucent-card">
                             <?php
-                            if ($_SESSION['priv'] === 1) {
+                           
+                            if ($_SESSION['priv'] === 0) {
                                 echo '
-                                <a id="add-book-btn" href="add_book.php" class="btn btn-primary">Add Book</a>';
-                            } if ($_SESSION['priv'] === 0) {
-                                echo '
-                                <a id="add-book-btn" href="user_books.php" class="btn btn-primary">My Books</a>';
+                                <a id="add-book-btn" href="user_books.php" class="btn btn-primary">My Books</a>
+                                <a id="add-book-btn" href="panel.php" class="btn btn-primary">Back</a>';
                             }
                             ?>
                         </div>

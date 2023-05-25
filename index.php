@@ -19,8 +19,7 @@
             <div class="col-12">
                 <header class="mb-4">
                     <nav class="navbar translucent-card fixed-top">
-                        <a class="navbar-brand" href="index.php">Biblioteka</a>
-                        </button>
+                        <a class="navbar-brand" href="index.php">Library</a>
                     </nav>
                 </header>
 
@@ -61,12 +60,12 @@
                     if(isset($_REQUEST["success"])){
                             if($_REQUEST["success"] == 1){
                                 echo '<div class="alert alert-success" role="alert">';
-                                echo 'Uspesno ste kreirali nalog!';
+                                echo 'You have successfully made an account!';
                                 echo '</div>';
                             }
                             elseif($_REQUEST["success"] == 2){
                                 echo '<div class="alert alert-success" role="alert">';
-                                echo 'Uspesno ste se odjavili sa stranice!';
+                                echo 'You have successfully logged out!';
                                 echo '</div>';
                             }
                         }
@@ -74,11 +73,11 @@
                         if(isset($_REQUEST["error"])){
                             if($_REQUEST["error"] == 1){
                                 echo '<div class="alert alert-danger" role="alert">';
-                                echo 'Greska u unosu podataka!';
+                                echo 'Input error!';
                                 echo '</div>';
                             }elseif($_REQUEST["error"] == 2){
                                 echo '<div class="alert alert-warning" role="alert">';
-                                echo 'Sesija je istekla, molimo vas da se ponovo prijavite!';
+                                echo 'Session expired, log in again!';
                                 echo '</div>';
                             }
                         }

@@ -5,6 +5,7 @@ include_once("dbconnection.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $book_id = $_POST["book_id"];
+    var_dump($book_id);
 
     // Perform the database query to remove the book
     $query = "DELETE FROM books WHERE id = '$book_id'";

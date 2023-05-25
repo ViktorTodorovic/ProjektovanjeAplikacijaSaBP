@@ -20,7 +20,7 @@
             <div class="col-12">
                 <header class="mb-4">
                     <nav class="navbar translucent-card fixed-top">
-                        <a class="navbar-brand" href="index.php">Biblioteka</a>
+                        <a class="navbar-brand" href="index.php">Library</a>
                         </button>
                     </nav>
                 </header>
@@ -40,32 +40,32 @@
 
                             <form action="php/register.php" method="post">
                                 <div class="form-group">
-                                    <label for="ime">Ime:</label>
-                                    <input type="text" name="ime" class="form-control" placeholder="Unesite ime"
+                                    <label for="ime">Name:</label>
+                                    <input type="text" name="ime" class="form-control" placeholder="Input name"
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="prezime">Prezime:</label>
-                                    <input type="text" name="prezime" class="form-control" placeholder="Unesite prezime"
+                                    <label for="prezime">Surname:</label>
+                                    <input type="text" name="prezime" class="form-control" placeholder="Input surname"
                                         required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Unesite email"
+                                    <input type="email" name="email" class="form-control" placeholder="Input email"
                                         required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password:</label>
                                     <input type="password" name="password" class="form-control"
-                                        placeholder="Unesite password" required>
+                                        placeholder="Input password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="passwordre">Password-re:</label>
                                     <input type="password" name="passwordre" class="form-control"
-                                        placeholder="Unesite password opet" required>
+                                        placeholder="Input password again" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="about">O sebi</label>
+                                    <label for="about">About:</label>
                                     <textarea class="form-control" name="about" rows="3"></textarea>
                                 </div>
 
@@ -79,11 +79,11 @@
                         if(isset($_REQUEST["error"])){
                             if($_REQUEST["error"] == 1){
                                 echo '<div class="alert alert-danger" role="alert">';
-                                echo 'Sifre se ne poklapaju!';
+                                echo 'Passwords dont match!';
                                 echo '</div>';
                             } elseif($_REQUEST["error"] == 2){
                                 echo '<div class="alert alert-danger" role="alert">';
-                                echo 'Email vec postoji u bazi podataka!';
+                                echo 'Email is already in use!';
                                 echo '</div>';
 
                             }
